@@ -1,0 +1,81 @@
+<div class="ui-g">
+  <p-panel header="Administración de items" [style]="{widht:'70%', margin:'0 auto'}" [toggleable]="true">
+      <div>
+          <p-menubar [style]="{'margin-bottom':'20px'}" [model]="elements" ></p-menubar>
+      </div>
+    <p-table [value]="items" [columns]="cols" [paginator]="true" [rows]="5" >
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+         <th *ngFor="let col of columns">
+             {{col.header}}
+         </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns" > 
+                {{item[col.field]}} 
+            </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-panel>
+
+  <p-dialog header="Editar Elemento" [(visible)]="displayDilog" [style]="{width: '400px'}">
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="_about">_about</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="_about" [(ngModel)]="item._about" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="accessURL">accessURL</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="accessURL" [(ngModel)]="item.accessURL" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="byteSize">byteSize</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="byteSize" [(ngModel)]="item.byteSize" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="format">format</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="format" [(ngModel)]="item.format" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="title">title</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="title" [(ngModel)]="item.title" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="type">type</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="type" [(ngModel)]="item.type" />
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="pi pi-check" (click)="edit()" label="Guardar"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+</div>
